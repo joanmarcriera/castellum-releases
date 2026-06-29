@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Castellum — Command your inbox</title>
+<meta name="description" content="Castellum is a private, AI-powered email client for macOS. Built for managers who run projects out of their inbox — local AI, keyboard-first, your data never leaves your Mac." />
+<meta name="theme-color" content="#0b1626" />
+<script>document.documentElement.className += ' js';</script>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Castellum — Command your inbox" />
+<meta property="og:description" content="A private, AI-powered email client for macOS. Local AI, keyboard-first, your data stays on your Mac." />
+<meta property="og:url" content="https://castellummail.com" />
+<meta property="og:image" content="https://castellummail.com/icon.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --stone-950:#070d18; --stone-900:#0f172a; --stone-850:#141f33; --stone-800:#1e293b;
+    --stone-700:#334155; --stone-600:#475569; --stone-500:#64748b; --stone-400:#94a3b8;
+    --stone-300:#cbd5e1; --stone-200:#e2e8f0; --stone-100:#f1f5f9;
+    --bronze-200:#e6d2ad; --bronze-300:#d6b67e; --bronze-400:#c69f5b; --bronze-500:#b48a4a;
+    --bronze-600:#9a7338; --bronze-700:#7c5c2e; --gold:#d8b878;
+    --ink:#eef2f8; --muted:#9fb0c6;
+    --maxw:1120px;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--stone-950);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  /* Atmospheric backdrop: layered bronze glow over fortified stone + grain */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(900px 600px at 78% -8%, rgba(180,138,74,.18), transparent 60%),
+      radial-gradient(800px 700px at 8% 12%, rgba(39,52,74,.55), transparent 55%),
+      linear-gradient(180deg, #0b1424 0%, var(--stone-950) 40%, #060a13 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:linear-gradient(180deg, rgba(7,13,24,.82), rgba(7,13,24,.35));
+    border-bottom:1px solid rgba(180,138,74,.14);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.2px}
+  .brand .keep{width:30px;height:30px;border-radius:8px;flex:none}
+  .brand .name{font-family:var(--serif);font-size:1.28rem;letter-spacing:.3px}
+  .brand .name b{color:var(--gold);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a.lnk{font-size:.94rem;color:var(--stone-300);transition:color .2s}
+  .nav-links a.lnk:hover{color:var(--gold)}
+  @media(max-width:760px){.nav-links a.lnk{display:none}}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.96rem;
+    padding:13px 22px;border-radius:11px;cursor:pointer;transition:transform .18s, box-shadow .25s, background .2s;
+    border:1px solid transparent;white-space:nowrap}
+  .btn-primary{
+    background:linear-gradient(180deg,var(--gold),var(--bronze-500));
+    color:#1a1207;box-shadow:0 8px 30px -8px rgba(180,138,74,.6), inset 0 1px 0 rgba(255,255,255,.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px -10px rgba(180,138,74,.75), inset 0 1px 0 rgba(255,255,255,.4)}
+  .btn-ghost{background:rgba(255,255,255,.04);border-color:rgba(180,138,74,.32);color:var(--bronze-200)}
+  .btn-ghost:hover{border-color:var(--bronze-400);background:rgba(180,138,74,.1)}
+  .btn .apple{width:17px;height:17px;fill:currentColor}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:84px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.74rem;
+    text-transform:uppercase;letter-spacing:.22em;color:var(--bronze-300);
+    border:1px solid rgba(180,138,74,.28);padding:7px 14px;border-radius:100px;
+    background:rgba(180,138,74,.06)}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+  h1.title{font-family:var(--serif);font-weight:500;font-size:clamp(2.7rem,6vw,4.5rem);
+    line-height:1.02;letter-spacing:-.02em;margin:26px 0 0}
+  h1.title em{font-style:italic;color:var(--gold)}
+  .lede{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--muted);max-width:36ch;margin:24px 0 0;line-height:1.55}
+  @media(max-width:900px){.lede{margin-inline:auto}}
+  .cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  @media(max-width:900px){.cta-row{justify-content:center}}
+  .meta-line{margin-top:18px;font-family:var(--mono);font-size:.78rem;color:var(--stone-500);
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  @media(max-width:900px){.meta-line{justify-content:center}}
+  .meta-line .sep{opacity:.4}
+
+  /* Hero visual: the keep on a stone medallion + app glimpse */
+  .hero-art{position:relative;display:flex;justify-content:center;align-items:center}
+  .medallion{position:relative;width:min(380px,86%);aspect-ratio:1;border-radius:34px;
+    background:
+      radial-gradient(120% 120% at 50% 18%, rgba(180,138,74,.16), transparent 60%),
+      linear-gradient(160deg,#27344a,#0b1626 70%);
+    border:1px solid rgba(180,138,74,.22);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .medallion::after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, transparent 0 38px, rgba(180,138,74,.04) 38px 39px)}
+  .medallion .keep-lg{width:62%;height:62%;filter:drop-shadow(0 14px 30px rgba(0,0,0,.5))}
+  .float-chip{position:absolute;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
+    background:rgba(13,22,38,.85);border:1px solid rgba(180,138,74,.3);color:var(--bronze-200);
+    padding:9px 13px;border-radius:11px;backdrop-filter:blur(8px);box-shadow:0 12px 30px -12px rgba(0,0,0,.7)}
+  .chip-1{top:8%;right:-2%}.chip-2{bottom:12%;left:-4%}
+  @media(max-width:900px){.chip-1{right:4%}.chip-2{left:4%}}
+
+  /* ---------- TRUST STRIP ---------- */
+  .strip{border-block:1px solid rgba(180,138,74,.12);background:rgba(7,13,24,.4);margin-top:30px}
+  .strip-inner{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;padding:22px 24px}
+  .strip-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--stone-300)}
+  .strip-item svg{width:18px;height:18px;stroke:var(--bronze-400);fill:none;stroke-width:1.8}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:92px 0}
+  .sec-head{max-width:640px;margin-bottom:54px}
+  .sec-head.center{margin-inline:auto;text-align:center}
+  .kicker{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.24em;color:var(--bronze-400)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,2.9rem);line-height:1.08;letter-spacing:-.015em;margin:14px 0 0}
+  h2 em{font-style:italic;color:var(--gold)}
+  .sec-head p{color:var(--muted);font-size:1.06rem;margin-top:16px}
+
+  /* feature grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:880px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{position:relative;padding:28px 24px;border-radius:18px;
+    background:linear-gradient(165deg, rgba(30,41,59,.55), rgba(11,22,38,.5));
+    border:1px solid rgba(180,138,74,.14);transition:transform .25s, border-color .25s, box-shadow .25s;overflow:hidden}
+  .card:hover{transform:translateY(-4px);border-color:rgba(180,138,74,.4);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+  .card .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg, rgba(214,182,126,.18), rgba(180,138,74,.08));
+    border:1px solid rgba(180,138,74,.3);margin-bottom:18px}
+  .card .ic svg{width:21px;height:21px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:1.2rem;letter-spacing:.1px}
+  .card p{color:var(--muted);font-size:.95rem;margin-top:9px}
+  .card.wide{grid-column:span 2}
+  @media(max-width:560px){.card.wide{grid-column:span 1}}
+
+  /* privacy band */
+  .band{position:relative;border-radius:26px;overflow:hidden;padding:64px 48px;
+    background:
+      radial-gradient(140% 120% at 85% 10%, rgba(180,138,74,.16), transparent 55%),
+      linear-gradient(150deg,#172131,#0a1322);
+    border:1px solid rgba(180,138,74,.22)}
+  .band-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:46px;align-items:center}
+  @media(max-width:820px){.band-grid{grid-template-columns:1fr;gap:30px}}
+  .band h2{margin-top:12px}
+  .band p{color:var(--stone-300);margin-top:16px;font-size:1.05rem}
+  .checklist{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .checklist li{display:flex;gap:13px;align-items:flex-start;font-size:.98rem;color:var(--stone-200)}
+  .checklist .tick{flex:none;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(180,138,74,.16);border:1px solid rgba(180,138,74,.4)}
+  .checklist .tick svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:2.4}
+
+  /* keyboard row */
+  kbd{font-family:var(--mono);font-size:.82rem;background:rgba(7,13,24,.7);border:1px solid rgba(180,138,74,.3);
+    border-bottom-width:2px;padding:3px 9px;border-radius:7px;color:var(--bronze-200)}
+
+  /* ---------- DOWNLOAD ---------- */
+  .download{text-align:center}
+  .dl-card{max-width:620px;margin:0 auto;padding:44px 36px;border-radius:24px;
+    background:linear-gradient(165deg, rgba(30,41,59,.6), rgba(11,22,38,.55));
+    border:1px solid rgba(180,138,74,.26);box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+  .dl-card .keep-md{width:64px;height:64px;margin:0 auto 18px;display:block;
+    filter:drop-shadow(0 10px 24px rgba(0,0,0,.5))}
+  .dl-card h2{margin-bottom:6px}
+  .dl-specs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 28px}
+  .spec{font-family:var(--mono);font-size:.76rem;color:var(--stone-300);
+    border:1px solid rgba(148,163,184,.22);padding:6px 12px;border-radius:8px;background:rgba(7,13,24,.4)}
+  .spec b{color:var(--gold);font-weight:500}
+  .dl-note{margin-top:18px;font-size:.82rem;color:var(--stone-500)}
+  .dl-note a{color:var(--bronze-300);border-bottom:1px solid rgba(180,138,74,.3)}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid rgba(180,138,74,.12);padding:46px 0 56px;margin-top:30px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot-inner .brand .name{font-size:1.1rem}
+  .foot-links{display:flex;gap:26px;font-size:.9rem;color:var(--stone-400)}
+  .foot-links a:hover{color:var(--bronze-300)}
+  .copy{font-size:.82rem;color:var(--stone-600);margin-top:18px}
+
+  /* reveal on scroll — progressive enhancement: only hidden when JS is on */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- Inline keep symbol reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#27344a"/><stop offset=".55" stop-color="#15233a"/><stop offset="1" stop-color="#0b1626"/>
+    </linearGradient>
+    <linearGradient id="bronzeFlat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8b878"/><stop offset=".5" stop-color="#b48a4a"/><stop offset="1" stop-color="#866530"/>
+    </linearGradient>
+    <symbol id="keep" viewBox="0 0 1024 1024">
+      <rect x="0" y="0" width="1024" height="1024" rx="228" fill="url(#tile)"/>
+      <rect x="6" y="6" width="1012" height="1012" rx="222" fill="none" stroke="#b48a4a" stroke-opacity=".22" stroke-width="4"/>
+      <g fill="url(#bronzeFlat)">
+        <rect x="300" y="452" width="424" height="328" rx="6"/>
+        <rect x="300" y="416" width="55.1" height="44"/><rect x="392.2" y="416" width="55.1" height="44"/>
+        <rect x="484.4" y="416" width="55.1" height="44"/><rect x="576.6" y="416" width="55.1" height="44"/>
+        <rect x="668.9" y="416" width="55.1" height="44"/>
+        <rect x="452" y="356" width="120" height="120" rx="4"/>
+        <rect x="452" y="320" width="31.2" height="44"/><rect x="496.4" y="320" width="31.2" height="44"/><rect x="540.8" y="320" width="31.2" height="44"/>
+        <rect x="276" y="772" width="472" height="22" rx="8"/>
+      </g>
+      <g fill="#0c1a2e">
+        <path d="M472 794 L472 632 A40 40 0 0 1 552 632 L552 794 Z"/>
+        <path d="M356 700 L356 632 A18 18 0 0 1 392 632 L392 700 Z"/>
+        <path d="M632 700 L632 632 A18 18 0 0 1 668 632 L668 700 Z"/>
+        <path d="M496 452 L496 408 A16 16 0 0 1 528 408 L528 452 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg class="keep"><use href="#keep"/></svg>
+      <span class="name"><b>Castellum</b></span>
+    </a>
+    <nav class="nav-links">
+      <a class="lnk" href="#features">Features</a>
+      <a class="lnk" href="#privacy">Privacy</a>
+      <a class="lnk" href="#download">Download</a>
+      <a class="btn btn-primary" href="#download">
+        <svg class="apple" viewBox="0 0 384 512"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C71.4 141.2 16 184.6 16 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-92.6zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26 2 49.7-11.4 69.5-34.3z"/></svg>
+        Download
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal"><span class="dot"></span>For macOS · Apple Silicon</span>
+        <h1 class="title reveal">Command your inbox like a <em>fortress.</em></h1>
+        <p class="lede reveal">Castellum is a private, AI-powered email client for managers who run projects out of their inbox. Local AI, keyboard-first, and your mail never leaves your Mac.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#download">
+            <svg class="apple" viewBox="0 0 384 512"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C71.4 141.2 16 184.6 16 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-92.6zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26 2 49.7-11.4 69.5-34.3z"/></svg>
+            Download for Mac
+          </a>
+          <a class="btn btn-ghost" href="#features">See what's inside</a>
+        </div>
+        <div class="meta-line reveal">
+          <span>Free download</span><span class="sep">·</span>
+          <span>Notarized by Apple</span><span class="sep">·</span>
+          <span>Apple Silicon (M-series)</span>
+        </div>
+      </div>
+      <div class="hero-art reveal">
+        <div class="medallion">
+          <svg class="keep-lg"><use href="#keep"/></svg>
+        </div>
+        <span class="float-chip chip-1">⌘ local-only AI</span>
+        <span class="float-chip chip-2">j / k to triage</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div class="strip-item"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg> Notarized &amp; signed</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg> Runs AI on-device</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Your data stays local</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24"><path d="M22 6 12 13 2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg> Gmail + any IMAP</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker">The keep</span>
+        <h2>Everything a manager needs to <em>hold the line.</em></h2>
+        <p>Not another minimalist inbox. Castellum is a command HQ — email, project work, and AI triage in one fortified place.</p>
+      </div>
+      <div class="grid">
+        <div class="card wide reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <h3>Active Work, not just unread</h3>
+          <p>A built-in kanban turns threads into tracked follow-ups. Surface overdue replies, prep for meetings, and never let a project email slip through the portcullis.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Local AI engine</h3>
+          <p>Summaries, triage and draft replies via Ollama on your own machine. No email content leaves your Mac.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M2 7l10 6 10-6"/><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div>
+          <h3>Gmail in one click</h3>
+          <p>Sign in with Google instantly — or connect Outlook, iCloud, Fastmail and any server through manual IMAP/SMTP.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M7 14h10"/></svg></div>
+          <h3>Keyboard-first</h3>
+          <p>Fly through your inbox with <kbd>j</kbd>/<kbd>k</kbd> navigation, <kbd>/</kbd> to search, and a command palette for everything else.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M17 11a4 4 0 1 0 0-8M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M22 21v-1a6 6 0 0 0-4-5.6"/></svg></div>
+          <h3>Projects, contacts &amp; calendar</h3>
+          <p>Link emails to project spaces, notes and people — with an agenda view and meeting-prep summaries beside your mail.</p>
+        </div>
+        <div class="card wide reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Compliance-first by default</h3>
+          <p>Local-only AI mode is on from the first launch. Sensitive content stays on-device, you choose if and when anything cloud-based is ever allowed. Built for people who can't send the inbox to a third party.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY BAND -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="band reveal">
+        <div class="band-grid">
+          <div>
+            <span class="kicker">Why a castle</span>
+            <h2>Your inbox is <em>yours.</em> Full stop.</h2>
+            <p>Most "AI email" tools ship your mail to someone else's servers to work. Castellum is built the opposite way: the walls keep your data <em>in</em>, and the AI comes to it.</p>
+          </div>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span> AI runs on-device with Ollama — no email sent to the cloud.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span> Mail and notes stored in a local SQLite database on your Mac.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span> Signed with an Apple Developer ID and notarized — Gatekeeper-approved.</li>
+            <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span> No tracking, no account, no telemetry you didn't ask for.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download" class="download">
+    <div class="wrap">
+      <div class="dl-card reveal">
+        <svg class="keep-md"><use href="#keep"/></svg>
+        <span class="kicker">Take the keep</span>
+        <h2>Download Castellum</h2>
+        <p style="color:var(--muted);margin-top:8px">The current release is a free, notarized build for Apple Silicon.</p>
+        <div class="dl-specs">
+          <span class="spec"><b>macOS</b> 12+</span>
+          <span class="spec"><b>Apple Silicon</b> M1–M4</span>
+          <span class="spec"><b>.dmg</b> ~114 MB</span>
+          <span class="spec"><b>v0.1.0</b></span>
+        </div>
+        <a class="btn btn-primary" id="dl-btn" href="https://github.com/joanmarcriera/castellum-releases/releases/download/v0.1.0/Castellum-0.1.0-arm64.dmg" style="font-size:1.05rem;padding:15px 28px">
+          <svg class="apple" viewBox="0 0 384 512"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C71.4 141.2 16 184.6 16 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-92.6zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26 2 49.7-11.4 69.5-34.3z"/></svg>
+          Download for Mac
+        </a>
+        <p class="dl-note">First launch: right-click the app &rarr; <b>Open</b> if macOS asks. Verify the <a href="https://github.com/joanmarcriera/castellum-releases/releases/latest">SHA-256 checksum</a> on the release page. Microsoft 365 one-click sign-in is coming soon — Outlook works today via IMAP.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a class="brand" href="#top">
+        <svg class="keep" style="width:26px;height:26px;border-radius:7px"><use href="#keep"/></svg>
+        <span class="name"><b>Castellum</b></span>
+      </a>
+      <div class="foot-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/joanmarcriera/castellum-releases/releases">Releases</a>
+      </div>
+    </div>
+    <p class="copy">© 2026 Joan Marc Riera Duocastella. Castellum — a private, AI-powered email client for macOS. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Staggered reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        const els = e.target.parentElement ? [...e.target.parentElement.querySelectorAll('.reveal')] : [];
+        e.target.style.transitionDelay = Math.min(els.indexOf(e.target),6)*70 + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
