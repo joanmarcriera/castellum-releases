@@ -1,0 +1,31 @@
+name: Triage new issues
+
+# Auto-label issues opened from the in-app "Report a Problem" reporter so they're
+# easy to find. Uses the event payload object (not shell interpolation) — no
+# command-injection surface.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const labels = ['needs-triage'];
+            // The diagnostics block the in-app reporter attaches.
+            if (/Diagnostics|process\.versions|Electron|Castellum (Debug|version)/i.test(body)) {
+              labels.push('from-app');
+            }
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels,
+            });
