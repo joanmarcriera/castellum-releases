@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Castellum — Privacy Policy</title>
+<meta name="description" content="Castellum Privacy Policy" />
+<meta name="theme-color" content="#0b1626" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --stone-950:#070d18; --stone-900:#0f172a; --stone-850:#141f33; --stone-800:#1e293b;
+    --stone-700:#334155; --stone-500:#64748b; --stone-300:#cbd5e1; --stone-200:#e2e8f0;
+    --bronze-300:#d6b67e; --bronze-400:#c69f5b; --gold:#d8b878;
+    --ink:#eef2f8; --muted:#9fb0c6; --maxw:820px;
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--stone-950);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  header.site{border-bottom:1px solid rgba(180,138,74,.14);padding:22px 0}
+  header.site a.brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:.2px}
+  header.site a.brand span{color:var(--bronze-400)}
+  header.site nav{float:right;font-size:14px}
+  header.site nav a{color:var(--muted);text-decoration:none;margin-left:20px}
+  header.site nav a:hover{color:var(--gold)}
+  main{padding:54px 0 40px}
+  h1{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.15;margin-bottom:8px}
+  .eff{color:var(--muted);font-size:14px;margin-bottom:36px;font-family:var(--mono)}
+  h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:34px 0 12px;color:var(--bronze-300)}
+  h3{font-weight:700;font-size:17px;margin:22px 0 8px;color:var(--stone-200)}
+  p{margin:12px 0;color:var(--stone-200)}
+  ul,ol{margin:12px 0 12px 26px;color:var(--stone-200)}
+  li{margin:7px 0}
+  a{color:var(--bronze-300)}
+  strong{color:var(--ink)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--stone-850);padding:2px 6px;border-radius:5px;color:var(--bronze-300)}
+  hr{border:0;border-top:1px solid rgba(180,138,74,.14);margin:28px 0}
+  footer{border-top:1px solid rgba(180,138,74,.12);padding:34px 0 60px;margin-top:40px;color:var(--muted);font-size:14px}
+  footer a{color:var(--muted);text-decoration:none;margin-right:18px}
+  footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/">Castellum<span>.</span></a>
+  <nav><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/google-limited-use">Google Data</a></nav>
+</div></header>
+<main><div class="wrap">
+<h1>Privacy Policy</h1>
+<p class='eff'>Effective date: 17 July 2026 · Castellum</p>
+<p>Castellum (&quot;the app&quot;, &quot;we&quot;, &quot;us&quot;) is a native desktop email client provided by Joan Marc Riera (sole trader), trading via riera.co.uk (&quot;the provider&quot;). This policy explains what data Castellum handles, where it is stored, and — importantly — what we do NOT do with it.</p>
+<h2>1. Summary (the short version)</h2>
+<p>Castellum is <strong>local-first</strong>. Your email, contacts and calendar data stay <strong>on your own device</strong>, and AI features run against a <strong>local model by default</strong>. We operate <strong>no cloud server that receives your mailbox content</strong>. Castellum also offers an <strong>optional cloud-AI mode that is turned OFF by default</strong>; it only ever activates if you deliberately enable it and configure a provider (see §4). We do not sell your data, do not use it for advertising, and no human at Joan Marc Riera (sole trader), trading via riera.co.uk reads your email.</p>
+<h2>2. What data Castellum accesses</h2>
+<p>When you connect an account, Castellum accesses, on your device:</p>
+<ul>
+<li><strong>Email messages, headers, and attachments</strong> in the accounts you connect (via IMAP,</li>
+</ul>
+<p>or via Gmail/Microsoft over OAuth where you choose it).</p>
+<ul>
+<li><strong>Send capability</strong> to send mail on your behalf (SMTP, or Gmail/Graph send).</li>
+<li><strong>Contacts and calendar data</strong> already present in your mail account, for the app&#x27;s</li>
+</ul>
+<p>contacts and agenda features.</p>
+<ul>
+<li><strong>Account credentials / OAuth tokens</strong>, stored locally to keep you signed in.</li>
+</ul>
+<p>For <strong>Gmail via OAuth</strong>, Castellum requests these scopes: <code>gmail.readonly</code>, <code>gmail.modify</code>, <code>gmail.send</code>. These let the app read, organise (label/archive/flag), and send your mail — the core function of an email client.</p>
+<h2>3. Where your data is stored</h2>
+<ul>
+<li><strong>On your device only.</strong> Messages, search index, and app state are stored in a local</li>
+</ul>
+<p>SQLite database on your Mac. This data is <strong>not transmitted to us</strong> and does not pass through any Castellum-operated server.</p>
+<ul>
+<li>Standard local-storage caveats apply (e.g. the local database and its journal files</li>
+</ul>
+<p>are readable by anything with access to your user account on that machine; use full-disk encryption).</p>
+<h2>4. Artificial intelligence — local by default, optional cloud AI (opt-in)</h2>
+<p>Castellum&#x27;s AI features (summaries, draft replies, etc.) run against a <strong>local AI model (Ollama) on your own hardware / LAN by default</strong>. In this default mode the app enforces a <strong>hard egress guard</strong> so that no mailbox content leaves your device for AI processing.</p>
+<p>Castellum additionally offers an <strong>optional cloud-AI mode</strong>. It is <strong>disabled by default</strong> and <strong>never sends anything unless you explicitly turn it on</strong> and configure a provider. When — and only when — you enable it:</p>
+<ul>
+<li>The specific content you act on (e.g. the message you ask to summarise or reply to) is</li>
+</ul>
+<p>sent to <strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> solely to produce the output you requested, and is <strong>not used to train or improve any generalised AI model</strong>.</p>
+<ul>
+<li>It is used only to deliver the in-app feature you invoked — not for advertising,</li>
+</ul>
+<p>profiling, or any unrelated purpose.</p>
+<ul>
+<li>You can turn cloud AI off again at any time, returning the app to local-only processing.</li>
+</ul>
+<p>If you never enable it, Castellum behaves exactly as a local-only, no-egress email client.</p>
+<h2>5. Google API Services — Limited Use</h2>
+<p>Castellum&#x27;s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements. Specifically:</p>
+<ul>
+<li>Data from Google accounts is used **only to provide and improve the email-client</li>
+</ul>
+<p>features you see in the app**.</p>
+<ul>
+<li>We do <strong>not</strong> transfer or sell this data for advertising, marketing, or any other purpose.</li>
+<li>We do <strong>not</strong> allow humans to read this data, except (a) with your explicit consent for a</li>
+</ul>
+<p>specific action (e.g. debugging a problem you report), (b) where required for security, or (c) to comply with applicable law.</p>
+<ul>
+<li>We do <strong>not</strong> use Google user data to train or improve generalised/foundation AI models.</li>
+</ul>
+<p>If you enable the optional cloud-AI mode (§4), Google-sourced content you act on is sent to a third-party cloud AI provider that you explicitly select and enable in the app <strong>only</strong> to produce the in-app result you requested, under provider terms that prohibit training on your content — consistent with the Limited Use requirements.</p>
+<ul>
+<li>We use this data only in ways consistent with this Privacy Policy.</li>
+</ul>
+<p>A fuller standalone statement is at /google-limited-use.</p>
+<h2>6. Data we process off your device (sub-processors)</h2>
+<p>Castellum&#x27;s core email function uses <strong>no cloud sub-processor</strong>. Off-device processing is limited to the following, and (except licensing) only when you opt in:</p>
+<ul>
+<li><strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> — *only if you enable the optional cloud-AI mode (§4).* Receives the</li>
+</ul>
+<p>specific message content you act on, to generate the summary/reply you requested. Does not train on your content. If cloud AI is left off (the default), no mailbox content is sent here.</p>
+<ul>
+<li><strong>Lemon Squeezy</strong> — Merchant of Record; handles checkout, payment and tax. Receives your</li>
+</ul>
+<p>purchase details (name, email, payment data), <strong>not your mailbox content</strong>.</p>
+<ul>
+<li><strong>License-fulfilment automation (self-hosted n8n) and CRM (self-hosted EspoCRM)</strong> —</li>
+</ul>
+<p>process your purchase email/name to issue and manage your licence. <strong>No mailbox content.</strong></p>
+<p>Apart from the opt-in cloud-AI provider, these handle purchase/account data only and never receive your email, contacts, or calendar.</p>
+<h2>7. What we do NOT do</h2>
+<ul>
+<li>We do not sell or rent your data.</li>
+<li>We do not use your data for advertising or ad targeting.</li>
+<li>We do not build profiles of you for third parties.</li>
+<li>No human at Joan Marc Riera (sole trader), trading via riera.co.uk reads your email except the narrow security/consent/legal cases in §5.</li>
+</ul>
+<h2>8. Data retention and deletion</h2>
+<p>Because your mail lives on your device, <strong>you control it</strong>: deleting the app and its local data store removes it. Disconnecting an account removes its stored tokens. For any purchase data held by the sub-processors in §6, contact info@castellummail.com to request deletion, subject to legal record-keeping requirements.</p>
+<h2>9. Your rights</h2>
+<p>Depending on where you live (e.g. UK GDPR / EU GDPR / CCPA), you may have rights to access, correct, delete, or port your data, and to object to processing. Since Castellum stores your mail locally, you already exercise most of these directly. For purchase data, email info@castellummail.com.</p>
+<h2>10. Children</h2>
+<p>Castellum is not directed at children under 16 and we do not knowingly collect their data.</p>
+<h2>11. Changes</h2>
+<p>We may update this policy; the effective date above will change and material changes will be noted at /privacy.</p>
+<h2>12. Contact</h2>
+<p>Joan Marc Riera (sole trader), trading via riera.co.uk Email: info@castellummail.com Governing law: England &amp; Wales, United Kingdom</p>
+</div></main>
+<footer><div class="wrap">
+  <a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/google-limited-use">Google Limited-Use</a>
+  <p style="margin-top:14px">© 2026 Joan Marc Riera Duocastella · Castellum — a private, AI-powered email client for macOS.</p>
+</div></footer>
+</body>
+</html>

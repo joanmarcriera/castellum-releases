@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Castellum — Google Limited-Use Disclosure</title>
+<meta name="description" content="Castellum Google Limited-Use Disclosure" />
+<meta name="theme-color" content="#0b1626" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --stone-950:#070d18; --stone-900:#0f172a; --stone-850:#141f33; --stone-800:#1e293b;
+    --stone-700:#334155; --stone-500:#64748b; --stone-300:#cbd5e1; --stone-200:#e2e8f0;
+    --bronze-300:#d6b67e; --bronze-400:#c69f5b; --gold:#d8b878;
+    --ink:#eef2f8; --muted:#9fb0c6; --maxw:820px;
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--stone-950);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  header.site{border-bottom:1px solid rgba(180,138,74,.14);padding:22px 0}
+  header.site a.brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:.2px}
+  header.site a.brand span{color:var(--bronze-400)}
+  header.site nav{float:right;font-size:14px}
+  header.site nav a{color:var(--muted);text-decoration:none;margin-left:20px}
+  header.site nav a:hover{color:var(--gold)}
+  main{padding:54px 0 40px}
+  h1{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.15;margin-bottom:8px}
+  .eff{color:var(--muted);font-size:14px;margin-bottom:36px;font-family:var(--mono)}
+  h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:34px 0 12px;color:var(--bronze-300)}
+  h3{font-weight:700;font-size:17px;margin:22px 0 8px;color:var(--stone-200)}
+  p{margin:12px 0;color:var(--stone-200)}
+  ul,ol{margin:12px 0 12px 26px;color:var(--stone-200)}
+  li{margin:7px 0}
+  a{color:var(--bronze-300)}
+  strong{color:var(--ink)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--stone-850);padding:2px 6px;border-radius:5px;color:var(--bronze-300)}
+  hr{border:0;border-top:1px solid rgba(180,138,74,.14);margin:28px 0}
+  footer{border-top:1px solid rgba(180,138,74,.12);padding:34px 0 60px;margin-top:40px;color:var(--muted);font-size:14px}
+  footer a{color:var(--muted);text-decoration:none;margin-right:18px}
+  footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/">Castellum<span>.</span></a>
+  <nav><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/google-limited-use">Google Data</a></nav>
+</div></header>
+<main><div class="wrap">
+<h1>Google Limited-Use Disclosure</h1>
+<p class='eff'>Effective date: 17 July 2026 · Castellum</p>
+<h2>Google API Services User Data Policy — Limited Use compliance</h2>
+<p>Castellum, provided by Joan Marc Riera (sole trader), trading via riera.co.uk, uses Google APIs to give you an email client for your own Gmail account. Castellum&#x27;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, <strong>including the Limited Use requirements</strong>.</p>
+<h3>Scopes requested and why</h3>
+<ul>
+<li><code>https://www.googleapis.com/auth/gmail.readonly</code> — read your messages and metadata to</li>
+</ul>
+<p>display your mailbox, thread conversations, and build the local search index.</p>
+<ul>
+<li><code>https://www.googleapis.com/auth/gmail.modify</code> — organise your mail: mark read/unread,</li>
+</ul>
+<p>label, archive, move, and flag messages, as you direct in the app.</p>
+<ul>
+<li><code>https://www.googleapis.com/auth/gmail.send</code> — send and reply to messages on your behalf.</li>
+</ul>
+<p>Each scope maps directly to a core, user-visible email-client feature. No scope is used for any purpose beyond operating the app on your device.</p>
+<h3>The four Limited-Use commitments</h3>
+<ol>
+<li><strong>In-app use only.</strong> We use Google user data solely to provide and improve the</li>
+</ol>
+<p>user-facing features of Castellum. We do not use it for any unrelated purpose.</p>
+<ol>
+<li><strong>No transfer.</strong> We do not transfer Google user data to third parties, except as necessary</li>
+</ol>
+<p>to provide or improve the app&#x27;s features, to comply with applicable law, or as part of a merger/acquisition with your consent. Castellum stores your data <strong>locally on your device</strong> and, by default, is not sent to us or to any AI provider (AI runs locally via Ollama with a hard egress guard). If <strong>you</strong> enable the <strong>optional, off-by-default cloud-AI mode</strong>, the specific content you act on is transferred to <strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> solely to provide the in-app feature you requested (e.g. a summary or draft reply), under terms that <strong>prohibit using your content to train or improve generalised AI models</strong>. We do <strong>not</strong> transfer Google user data for advertising.</p>
+<ol>
+<li><strong>No advertising.</strong> We do not use Google user data for serving advertisements, including</li>
+</ol>
+<p>retargeting, personalised, or interest-based advertising.</p>
+<ol>
+<li><strong>No human reading.</strong> We do not allow humans to read Google user data, unless:</li>
+</ol>
+<p>(a) we have your explicit consent to read specific messages (e.g. to debug an issue you report to support); (b) it is necessary for security purposes such as investigating abuse; or (c) it is required to comply with applicable law; or (d) our use is limited to internal operations and the data has been aggregated and anonymised.</p>
+<h3>Selling data</h3>
+<p>We do <strong>not</strong> sell Google user data.</p>
+<h3>Contact</h3>
+<p>Questions about this disclosure: info@castellummail.com — Joan Marc Riera (sole trader), trading via riera.co.uk.</p>
+</div></main>
+<footer><div class="wrap">
+  <a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/google-limited-use">Google Limited-Use</a>
+  <p style="margin-top:14px">© 2026 Joan Marc Riera Duocastella · Castellum — a private, AI-powered email client for macOS.</p>
+</div></footer>
+</body>
+</html>
