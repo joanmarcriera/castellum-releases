@@ -52,9 +52,9 @@
 </div></header>
 <main><div class="wrap">
 <h1>Google Limited-Use Disclosure</h1>
-<p class='eff'>Effective date: 17 July 2026 · Castellum</p>
+<p class='eff'>Effective date: 17 October 2026 · Castellum</p>
 <h2>Google API Services User Data Policy — Limited Use compliance</h2>
-<p>Castellum, provided by Joan Marc Riera (sole trader), trading via riera.co.uk, uses Google APIs to give you an email client for your own Gmail account. Castellum&#x27;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, <strong>including the Limited Use requirements</strong>.</p>
+<p>Castellum, provided by Joan Marc Riera (sole trader), trading via riera.co.uk, is building Google sign-in (OAuth) so you can use the app with your own Gmail account. <strong>Google sign-in is not available in the current release</strong>, which connects Gmail over IMAP with an app password; this disclosure describes how Google data will be handled once it ships. Castellum&#x27;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, <strong>including the Limited Use requirements</strong>.</p>
 <h3>Scopes requested and why</h3>
 <ul>
 <li><code>https://www.googleapis.com/auth/gmail.readonly</code> — read your messages and metadata to</li>
@@ -76,7 +76,7 @@
 <ol>
 <li><strong>No transfer.</strong> We do not transfer Google user data to third parties, except as necessary</li>
 </ol>
-<p>to provide or improve the app&#x27;s features, to comply with applicable law, or as part of a merger/acquisition with your consent. Castellum stores your data <strong>locally on your device</strong> and, by default, is not sent to us or to any AI provider (AI runs locally via Ollama with a hard egress guard). If <strong>you</strong> enable the <strong>optional, off-by-default cloud-AI mode</strong>, the specific content you act on is transferred to <strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> solely to provide the in-app feature you requested (e.g. a summary or draft reply), under terms that <strong>prohibit using your content to train or improve generalised AI models</strong>. We do <strong>not</strong> transfer Google user data for advertising.</p>
+<p>to provide or improve the app&#x27;s features, to comply with applicable law, or as part of a merger/acquisition with your consent. Castellum stores your data <strong>locally on your device</strong> and, by default, is not sent to us or to any AI provider (AI runs locally via Ollama with a hard egress guard). There is no cloud-AI mode today; if an <strong>optional, off-by-default cloud-AI mode</strong> is added and <strong>you</strong> enable it, the specific content you act on is transferred to <strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> solely to provide the in-app feature you requested (e.g. a summary or draft reply), under terms that <strong>prohibit using your content to train or improve generalised AI models</strong>. We do <strong>not</strong> transfer Google user data for advertising.</p>
 <ol>
 <li><strong>No advertising.</strong> We do not use Google user data for serving advertisements, including</li>
 </ol>
@@ -87,6 +87,8 @@
 <p>(a) we have your explicit consent to read specific messages (e.g. to debug an issue you report to support); (b) it is necessary for security purposes such as investigating abuse; or (c) it is required to comply with applicable law; or (d) our use is limited to internal operations and the data has been aggregated and anonymised.</p>
 <h3>Selling data</h3>
 <p>We do <strong>not</strong> sell Google user data.</p>
+<h3>Server-settings lookup is not Google data</h3>
+<p>When you add an account at a domain Castellum has no built-in settings for, it can look up that domain's mail servers (DNS, the domain's own settings page, and Mozilla's public provider database, <code>autoconfig.thunderbird.net</code>). This sends <strong>only the domain</strong> (the part after the @) &mdash; no address, password, token or Google user data &mdash; and it is not an API call to Google. Gmail and Googlemail addresses use Castellum's built-in settings and trigger no lookup at all; a custom domain hosted at Google Workspace is recognised from its public DNS mail-exchanger records. The lookup can be switched off in Settings &gt; General &gt; Account Setup. See the <a href="/privacy">Privacy Policy</a> for the full description.</p>
 <h3>Contact</h3>
 <p>Questions about this disclosure: info@castellummail.com — Joan Marc Riera (sole trader), trading via riera.co.uk.</p>
 </div></main>

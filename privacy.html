@@ -52,25 +52,25 @@
 </div></header>
 <main><div class="wrap">
 <h1>Privacy Policy</h1>
-<p class='eff'>Effective date: 11 September 2026 · Castellum</p>
+<p class='eff'>Effective date: 17 October 2026 · Castellum</p>
 <p>Castellum (&quot;the app&quot;, &quot;we&quot;, &quot;us&quot;) is a native desktop email client provided by Joan Marc Riera (sole trader), trading via riera.co.uk (&quot;the provider&quot;). This policy explains what data Castellum handles, where it is stored, and — importantly — what we do NOT do with it.</p>
 <h2>1. Summary (the short version)</h2>
-<p>Castellum is <strong>local-first</strong>. Your email, contacts and calendar data stay <strong>on your own device</strong>, and AI features run against a <strong>local model by default</strong>. We operate <strong>no cloud server that receives your mailbox content</strong>. Castellum also offers an <strong>optional cloud-AI mode that is turned OFF by default</strong>; it only ever activates if you deliberately enable it and configure a provider (see §4). We do not sell your data, do not use it for advertising, and no human at Joan Marc Riera (sole trader), trading via riera.co.uk reads your email.</p>
+<p>Castellum is <strong>local-first</strong>. Your email, contacts and calendar data stay <strong>on your own device</strong>, and AI features run against a <strong>local model by default</strong>. We operate <strong>no cloud server that receives your mailbox content</strong>. Castellum does <strong>not currently offer a cloud-AI mode</strong>; if one is ever added it will be off by default and opt-in only (see §4). We do not sell your data, do not use it for advertising, and no human at Joan Marc Riera (sole trader), trading via riera.co.uk reads your email.</p>
 <h2>2. What data Castellum accesses</h2>
 <p>When you connect an account, Castellum accesses, on your device:</p>
 <ul>
-<li><strong>Email messages, headers, and attachments</strong> in the accounts you connect (via IMAP,</li>
+<li><strong>Email messages, headers, and attachments</strong> in the accounts you connect (via IMAP/SMTP),</li>
 </ul>
-<p>or via Gmail/Microsoft over OAuth where you choose it).</p>
+<p>using the credentials you provide (an account or app password).</p>
 <ul>
-<li><strong>Send capability</strong> to send mail on your behalf (SMTP, or Gmail/Graph send).</li>
-<li><strong>Contacts and calendar data</strong> already present in your mail account, for the app&#x27;s</li>
+<li><strong>Send capability</strong> to send mail on your behalf (SMTP).</li>
+<li><strong>Contacts and calendar data</strong> from the mail you receive (such as meeting invitations) and, only if you grant macOS access, your Contacts and Calendar, for the app&#x27;s</li>
 </ul>
 <p>contacts and agenda features.</p>
 <ul>
-<li><strong>Account credentials / OAuth tokens</strong>, stored locally to keep you signed in.</li>
+<li><strong>Account credentials</strong> (passwords or app passwords), stored locally in your Mac&#x27;s Keychain to keep you signed in.</li>
 </ul>
-<p>For <strong>Gmail via OAuth</strong>, Castellum requests these scopes: <code>gmail.readonly</code>, <code>gmail.modify</code>, <code>gmail.send</code>. These let the app read, organise (label/archive/flag), and send your mail — the core function of an email client.</p>
+<p>Google sign-in (OAuth) is <strong>not available in the current release</strong>; Gmail is connected over IMAP with an app password. If Google sign-in is added, Castellum will request these scopes: <code>gmail.readonly</code>, <code>gmail.modify</code>, <code>gmail.send</code>. These let the app read, organise (label/archive/flag), and send your mail — the core function of an email client.</p>
 <h2>3. Where your data is stored</h2>
 <ul>
 <li><strong>On your device only.</strong> Messages, search index, and app state are stored in a local</li>
@@ -80,9 +80,13 @@
 <li>Standard local-storage caveats apply (e.g. the local database and its journal files</li>
 </ul>
 <p>are readable by anything with access to your user account on that machine; use full-disk encryption).</p>
-<h2>4. Artificial intelligence — local by default, optional cloud AI (opt-in)</h2>
+<h3>New-mail notifications</h3>
+<p>New-mail notifications are shown by macOS on this Mac only; nothing about them is sent to us or to anyone else. Turn off previews in Castellum &rarr; Settings &rarr; Notifications.</p>
+<h3>Spotlight search (opt-in, off by default)</h3>
+<p>Castellum can optionally index the <strong>subject and sender name/address</strong> of your messages into macOS's on-device <strong>Spotlight</strong> search, so they turn up when you search from Spotlight outside the app. This is <strong>off by default</strong> and only starts if you turn it on yourself in <strong>Settings &gt; General</strong>. When on, message <strong>bodies, HTML content and attachments are never indexed</strong> — only the subject line and sender identify a result. This index lives in Apple's on-device Spotlight store on your own Mac; it is never transmitted anywhere, but it is a new way message metadata becomes visible system-wide — to Spotlight itself and to other apps that query it — which is why it stays opt-in. Turning the setting off, or removing an account, removes everything Castellum indexed for it.</p>
+<h2>4. Artificial intelligence — local only today</h2>
 <p>Castellum&#x27;s AI features (summaries, draft replies, etc.) run against a <strong>local AI model (Ollama) on your own hardware / LAN by default</strong>. In this default mode the app enforces a <strong>hard egress guard</strong> so that no mailbox content leaves your device for AI processing.</p>
-<p>Castellum additionally offers an <strong>optional cloud-AI mode</strong>. It is <strong>disabled by default</strong> and <strong>never sends anything unless you explicitly turn it on</strong> and configure a provider. When — and only when — you enable it:</p>
+<p>Castellum does <strong>not currently offer a cloud-AI mode</strong>. If one is added in a future release it will be <strong>disabled by default</strong> and <strong>will never send anything unless you explicitly turn it on</strong> and configure a provider. In that case, and only then:</p>
 <ul>
 <li>The specific content you act on (e.g. the message you ask to summarise or reply to) is</li>
 </ul>
@@ -109,15 +113,15 @@
 <ul>
 <li>We do <strong>not</strong> use Google user data to train or improve generalised/foundation AI models.</li>
 </ul>
-<p>If you enable the optional cloud-AI mode (§4), Google-sourced content you act on is sent to a third-party cloud AI provider that you explicitly select and enable in the app <strong>only</strong> to produce the in-app result you requested, under provider terms that prohibit training on your content — consistent with the Limited Use requirements.</p>
+<p>If an optional cloud-AI mode is added and you enable it (§4), Google-sourced content you act on is sent to a third-party cloud AI provider that you explicitly select and enable in the app <strong>only</strong> to produce the in-app result you requested, under provider terms that prohibit training on your content — consistent with the Limited Use requirements.</p>
 <ul>
 <li>We use this data only in ways consistent with this Privacy Policy.</li>
 </ul>
 <p>A fuller standalone statement is at /google-limited-use.</p>
 <h2>6. Data we process off your device (sub-processors)</h2>
-<p>Castellum&#x27;s core email function uses <strong>no cloud sub-processor</strong>. Off-device processing is limited to the following, and (except licensing and the daily update check described below) only when you opt in:</p>
+<p>Castellum&#x27;s core email function uses <strong>no cloud sub-processor</strong>. Off-device processing is limited to the following, and (except licensing, the daily update check and the server-settings lookup described below) only when you opt in:</p>
 <ul>
-<li><strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> — *only if you enable the optional cloud-AI mode (§4).* Receives the</li>
+<li><strong>a third-party cloud AI provider that you explicitly select and enable in the app</strong> — *only if a cloud-AI mode is added and you enable it (§4); none exists today.* Would receive the</li>
 </ul>
 <p>specific message content you act on, to generate the summary/reply you requested. Does not train on your content. If cloud AI is left off (the default), no mailbox content is sent here.</p>
 <ul>
@@ -128,9 +132,17 @@
 <li><strong>License-fulfilment automation (self-hosted n8n) and CRM (self-hosted EspoCRM)</strong> —</li>
 </ul>
 <p>process your purchase email/name to issue and manage your licence. <strong>No mailbox content.</strong></p>
-<p>Apart from the opt-in cloud-AI provider, these handle purchase/account data only and never receive your email, contacts, or calendar.</p>
+<p>Apart from the opt-in cloud-AI provider, these handle purchase/account data only (and, for licence activation, the licence key) and never receive your email, contacts, or calendar.</p>
 <h3>Update check</h3>
 <p>Castellum checks for a new version <strong>once a day by default</strong> by fetching the latest-release record of the public <code>castellum-releases</code> repository from <code>api.github.com</code>. The request carries no account, device or usage identifiers (only the standard headers the system adds to every web request), nothing else is sent, and GitHub sees only your IP address as with any web request. You can switch the automatic check off in <strong>Settings &gt; General</strong>; <strong>Castellum &gt; Check for Updates…</strong> then runs it only when you ask.</p>
+<h3>Remote images in email</h3>
+<p>Messages with remote images are blocked by default: Castellum never fetches them automatically. If you click <strong>Load</strong> for a message, or choose to always allow a sender, Castellum makes a direct HTTP(S) request to that sender's (or their tracker's) own server to fetch the image — not to any Castellum server. That request reveals your IP address and that you opened the message, which is exactly how email tracking pixels work; this is why the default is off. You can review or revoke any sender you've allowed in <strong>Settings &gt; General</strong>.</p>
+<h3>List-Unsubscribe one-click</h3>
+<p>If a message you open carries a <strong>List-Unsubscribe</strong> header offering a one-click (RFC 8058) unsubscribe link, Castellum shows you the exact destination and asks you to confirm before doing anything. Only if you click <strong>Unsubscribe</strong> does Castellum send a single request to that address, with no other message content included. Nothing is sent automatically, and nothing is sent if you never open the message or never confirm.</p>
+<h3>Licence activation</h3>
+<p>If you enter a licence key and click <strong>Activate</strong>, Castellum sends that key in a single HTTPS request to the vendor's own activation server (<code>joanmarcriera.es</code>), which replies with whether the key is valid and when it expires. The request contains <strong>only the licence key</strong>: no email address, device identifier, account or mailbox data. The server necessarily sees your IP address, as with any web request. The licence key is treated as a secret: it is stored only in your macOS Keychain, never logged by the app, and it is sent nowhere else. Nothing is sent unless you click Activate, and nothing is sent on launch or in the background. Before the licence-key service is live, the request simply fails and nothing is stored on the server.</p>
+<h3>Server-settings lookup (adding an account)</h3>
+<p>When you type an address at a domain Castellum has no built-in settings for (it already knows Gmail, iCloud, Fastmail, Yahoo and Outlook.com without any lookup), Castellum can look up that domain's mail-server names so you don't have to find them. It waits until you stop typing, then asks, in this order and stopping at the first answer: <strong>DNS</strong> (service records and the domain's mail-exchanger records, through your Mac's normal resolver), <strong>the domain's own settings page</strong> (<code>autoconfig.&lt;domain&gt;</code> and <code>&lt;domain&gt;/.well-known/autoconfig</code>, over HTTPS), and finally <strong>Mozilla's public provider database</strong> (<code>autoconfig.thunderbird.net</code>, over HTTPS; if the first query finds nothing, it asks once more using the domain of the address's mail host). <strong>Only the domain — the part after the @ — is ever sent</strong>; never the part before it, never your password, and never anything from your mailbox. Your DNS resolver, the domain's web host and Mozilla each necessarily see your IP address and that domain, as with any web request. Castellum does not connect to the servers it finds until you press Test or Sync, never fills in a field you have already typed, and never accepts an unencrypted IMAP server from a lookup. You can switch the lookup off in <strong>Settings &gt; General &gt; Account Setup</strong> (<em>Look up server settings automatically</em>); with it off, nothing is looked up and you enter the servers yourself.</p>
 <h2>7. What we do NOT do</h2>
 <ul>
 <li>We do not sell or rent your data.</li>
