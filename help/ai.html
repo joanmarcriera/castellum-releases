@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Castellum — AI Help</title>
+<title>Castellum | AI Help</title>
 <meta name="description" content="How Castellum's AI features work (summaries, drafted replies, thread extractions, Find Similar): local-only by default, the Ollama endpoint, choosing a model, Test Connection, cloud AI (not yet available), and where AI jobs show." />
 <meta name="theme-color" content="#0b1626" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -55,7 +55,7 @@
 <p class="eff">Settings &gt; AI · Castellum</p>
 
 <h2>1. What runs where</h2>
-<p>Castellum's AI features — message summaries, drafted replies, action items pulled from a thread, and Find Similar — run <strong>exclusively on a local AI model (Ollama) on your own Mac or LAN</strong>. The app enforces a hard egress guard: only a local-network endpoint (loopback or a private LAN address) is accepted, and nothing you haven't explicitly asked about leaves your device. Castellum does not currently offer a cloud-AI option — see §6. Full detail is in the <a href="/privacy">Privacy Policy</a>.</p>
+<p>Castellum's AI features, message summaries, drafted replies, action items pulled from a thread, and Find Similar, run <strong>exclusively on a local AI model (Ollama) on your own Mac or LAN</strong>. The app enforces a hard egress guard: only a local-network endpoint (loopback or a private LAN address) is accepted, and nothing you haven't explicitly asked about leaves your device. Castellum does not currently offer a cloud-AI option, see §6. Full detail is in the <a href="/privacy">Privacy Policy</a>.</p>
 
 <h2>2. Installing Ollama</h2>
 <p>Ollama is a small, free program that runs AI models locally. To install it:</p>
@@ -64,22 +64,22 @@
 <li>Open Ollama once so it starts its background service (it listens on <code>127.0.0.1:11434</code> by default).</li>
 <li>Pull a model, e.g. from Terminal: <code>ollama pull llama3.1</code>. Any general-purpose chat model works; smaller models reply faster, larger ones write better summaries and drafts.</li>
 </ol>
-<p>If Ollama is already installed and running when you first launch Castellum, the app finds it automatically — see §5.</p>
+<p>If Ollama is already installed and running when you first launch Castellum, the app finds it automatically, see §5.</p>
 
 <h2>3. The endpoint</h2>
-<p>In <strong>Settings &gt; AI</strong>, the Endpoint field holds the address Castellum talks to, e.g. <code>http://127.0.0.1:11434</code> for Ollama running on the same Mac. Leave it as the default unless you run Ollama on another machine on your LAN, in which case enter that machine's local address (e.g. <code>http://192.168.1.20:11434</code>). Castellum's egress guard refuses public/internet endpoints outright — AI features simply won't reach one.</p>
+<p>In <strong>Settings &gt; AI</strong>, the Endpoint field holds the address Castellum talks to, e.g. <code>http://127.0.0.1:11434</code> for Ollama running on the same Mac. Leave it as the default unless you run Ollama on another machine on your LAN, in which case enter that machine's local network address and port. Castellum's egress guard refuses public/internet endpoints outright, AI features simply won't reach one.</p>
 
 <h2>4. Choosing a model</h2>
 <p>Once the endpoint is reachable, the Model picker lists every model Ollama has installed. Pick one; Castellum remembers your choice and uses it for every AI feature (every AI feature alike). Changing the endpoint clears the picker until you test again, since a different endpoint may serve different models.</p>
 
 <h2>5. Test Connection, and first-launch detection</h2>
-<p>Click <strong>Test Connection</strong> at any time to confirm Castellum can reach the endpoint and to (re)populate the model list. On a fresh install, if Castellum finds Ollama already answering at <code>127.0.0.1:11434</code>, it turns AI features on for you automatically and shows a short note under the toggle explaining why — nothing about your mail is sent anywhere by this check. Castellum never auto-enables a non-local endpoint; that only ever happens for Ollama found on your own Mac.</p>
+<p>Click <strong>Test Connection</strong> at any time to confirm Castellum can reach the endpoint and to (re)populate the model list. On a fresh install, if Castellum finds Ollama already answering at <code>127.0.0.1:11434</code>, it turns AI features on for you automatically and shows a short note under the toggle explaining why, nothing about your mail is sent anywhere by this check. Castellum never auto-enables a non-local endpoint; that only ever happens for Ollama found on your own Mac.</p>
 
-<h2>6. Cloud AI — not yet available</h2>
-<p>Today, AI features in Castellum run <strong>exclusively on your local Ollama instance</strong>: Settings &gt; AI has no cloud-AI toggle or provider configuration, and no mailbox content ever leaves your device. The <a href="/privacy">Privacy Policy</a> §4 sets out the terms that would apply to an optional cloud-AI mode if Castellum adds one in future — nothing changes unless and until that ships, and it would remain off by default with an explicit opt-in.</p>
+<h2>6. Cloud AI, not yet available</h2>
+<p>Today, AI features in Castellum run <strong>exclusively on your local Ollama instance</strong>: Settings &gt; AI has no cloud-AI toggle or provider configuration, and no mailbox content ever leaves your device. The <a href="/privacy">Privacy Policy</a> §4 sets out the terms that would apply to an optional cloud-AI mode if Castellum adds one in future, nothing changes unless and until that ships, and it would remain off by default with an explicit opt-in.</p>
 
 <h2>7. Where AI jobs show</h2>
-<p>Every summarise, draft-reply or thread-extraction request becomes a trackable job. Open <strong>Window &gt; AI Activity</strong> (or the <strong>Show AI Activity…</strong> button in Settings &gt; AI) to see every job this session — its kind, the message it's working on, its current state, and how long it's been running — with a Cancel button per row and a Clear Finished button once you're done with the completed ones.</p>
+<p>Every summarise, draft-reply or thread-extraction request becomes a trackable job. Open <strong>Window &gt; AI Activity</strong> (or the <strong>Show AI Activity…</strong> button in Settings &gt; AI) to see every job this session, its kind, the message it's working on, its current state, and how long it's been running, with a Cancel button per row and a Clear Finished button once you're done with the completed ones.</p>
 
 <h2>8. What the AI does</h2>
 <p>All of these use your local model only, and need AI switched on in Settings &gt; AI.</p>
@@ -94,7 +94,7 @@
 </div></main>
 <footer><div class="wrap">
   <a href="/">Home</a><a href="/help/">Help</a><a href="/help/connect-account">Connect an Account</a><a href="/help/ai">AI Help</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-  <p style="margin-top:14px">© 2026 Joan Marc Riera Duocastella · Castellum — a private, AI-powered email client for macOS.</p>
+  <p style="margin-top:14px">Copyright 2026 Riera Technologies Ltd · Castellum, a private email client for macOS.</p>
 </div></footer>
 </body>
 </html>

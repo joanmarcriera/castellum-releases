@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Castellum — Connect Any Account</title>
+<title>Castellum | Connect Any Account</title>
 <meta name="description" content="How to connect Gmail, iCloud, Fastmail, Yahoo and generic IMAP accounts to Castellum with an app password, plus the Outlook/Microsoft 365 status." />
 <meta name="theme-color" content="#0b1626" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -60,9 +60,9 @@
 <h1>Connect any account</h1>
 <p class="eff">Add Account · Castellum</p>
 
-<p>Castellum connects over standard IMAP/SMTP, so it works with almost any mail provider. Typing your address in the <strong>Add IMAP account</strong> sheet (the <strong>+</strong> button in the main window toolbar, or <strong>Add…</strong> in Settings &gt; Accounts) detects well-known providers automatically and fills in the server settings below — you only need to generate an app password on the provider's side and paste it in. This page covers Gmail, iCloud, Fastmail, Yahoo, generic IMAP, and the current status of Outlook/Microsoft 365.</p>
+<p>Castellum connects over standard IMAP/SMTP, so it works with almost any mail provider. Typing your address in the <strong>Add IMAP account</strong> sheet (the <strong>+</strong> button in the main window toolbar, or <strong>Add…</strong> in Settings &gt; Accounts) detects well-known providers automatically and fills in the server settings below, you only need to generate an app password on the provider's side and paste it in. This page covers Gmail, iCloud, Fastmail, Yahoo, generic IMAP, and the current status of Outlook/Microsoft 365.</p>
 
-<div class="note"><strong>Why an app password, not your normal password?</strong> All of these providers require two-factor authentication (2FA) to be turned on before they'll issue an app password, and the app password is what Castellum stores in your Mac's Keychain — never your account password. Revoking an app password later (from the provider's site) disconnects Castellum without touching your main sign-in.</div>
+<div class="note"><strong>Why an app password, not your normal password?</strong> All of these providers require two-factor authentication (2FA) to be turned on before they'll issue an app password, and the app password is what Castellum stores in your Mac's Keychain, never your account password. Revoking an app password later (from the provider's site) disconnects Castellum without touching your main sign-in.</div>
 
 <h2>1. Gmail</h2>
 <ol>
@@ -76,7 +76,7 @@
 <tr><td>SMTP host</td><td><code>smtp.gmail.com</code></td></tr>
 <tr><td>SMTP port</td><td><code>587</code> (STARTTLS)</td></tr>
 </table>
-<p>Castellum detects <code>@gmail.com</code> and <code>@googlemail.com</code> addresses and fills these in for you; a Google Workspace domain isn't detected automatically, but you can apply the Gmail preset yourself from the sheet's "Use settings for…" menu.</p>
+<p>Castellum detects <code>@gmail.com</code> and <code>@googlemail.com</code> addresses and fills these in for you; a Google Workspace domain is recognised from its DNS mail records when <strong>Look up server settings automatically</strong> is on (Settings &gt; General &gt; Account Setup). With it off, apply the Gmail preset yourself from the sheet's "Use settings for…" menu.</p>
 
 <h2>2. iCloud Mail</h2>
 <ol>
@@ -103,7 +103,7 @@
 <tr><td>SMTP host</td><td><code>smtp.fastmail.com</code></td></tr>
 <tr><td>SMTP port</td><td><code>465</code> (implicit TLS)</td></tr>
 </table>
-<p>A custom domain hosted at Fastmail isn't detected from the address alone; apply the Fastmail preset from the "Use settings for…" menu instead.</p>
+<p>A custom domain hosted at Fastmail is recognised the same way when the lookup is on. Otherwise apply the Fastmail preset from the "Use settings for…" menu.</p>
 
 <h2>4. Yahoo Mail</h2>
 <ol>
@@ -120,19 +120,19 @@
 
 <h2>5. Generic IMAP (any other provider)</h2>
 <p>Any provider offering standard IMAP and SMTP access works, even without a built-in preset. You'll need the server settings from your provider (usually on a "mail client setup" or "IMAP/SMTP settings" support page) and, if the provider requires 2FA, an app-specific password the same way as above.</p>
-<div class="note"><strong>IMAP must use port 993 with implicit TLS.</strong> Castellum's IMAP client doesn't support STARTTLS yet, so port <code>143</code> won't work: with "Use TLS" on you'll get a TLS handshake failure, and with it off your password is sent unencrypted. Never turn "Use TLS" off for IMAP. SMTP is more flexible — <code>465</code> (implicit TLS) or <code>587</code> (STARTTLS) both work.</div>
+<div class="note"><strong>Choose TLS or STARTTLS for IMAP, never None.</strong> The Security menu next to the port offers TLS (usually port <code>993</code>), STARTTLS (usually port <code>143</code>) and None. Picking the wrong one for a port gives a connection or handshake error. With None your password is sent unencrypted, so do not use it. SMTP works on <code>465</code> (implicit TLS) or <code>587</code> (STARTTLS).</div>
 <ol>
-<li>In the Add IMAP account sheet, enter your email address — if it isn't one of the built-in presets, Castellum leaves the server fields for you to fill in.</li>
-<li>Enter the IMAP host and port your provider publishes for implicit TLS — this is almost always port <code>993</code>. Keep "Use TLS" on.</li>
+<li>In the Add IMAP account sheet, enter your email address, if it isn't one of the built-in presets, Castellum leaves the server fields for you to fill in.</li>
+<li>Enter the IMAP host and port your provider publishes for implicit TLS, this is almost always TLS on port <code>993</code>. Leave Security on TLS unless your provider says STARTTLS.</li>
 <li>Enter the SMTP host and port (commonly <code>465</code> for implicit TLS, or <code>587</code> with STARTTLS).</li>
 <li>Enter your username (usually your full email address) and password or app password.</li>
 <li>Use <strong>Test Connection</strong> in the sheet to check both legs before saving.</li>
 </ol>
 
-<h2>6. Outlook.com / Microsoft 365 — not supported yet</h2>
-<p>Microsoft retired password sign-in for Outlook.com, Hotmail, Live and Microsoft 365 mailboxes, so these accounts need OAuth2 (XOAUTH2) sign-in rather than an app password. Castellum recognises these domains and says so plainly instead of letting you hit an opaque sign-in failure — Microsoft OAuth support is tracked as a future release (roadmap item S37) and isn't built yet.</p>
+<h2>6. Outlook.com / Microsoft 365, not supported yet</h2>
+<p>Microsoft retired password sign-in for Outlook.com, Hotmail, Live and Microsoft 365 mailboxes, so these accounts need OAuth2 (XOAUTH2) sign-in rather than an app password. Castellum recognises these domains and says so plainly instead of letting you hit an opaque sign-in failure, Microsoft sign-in is planned but is not built yet.</p>
 <p>Affected domains: <code>outlook.com</code>, <code>hotmail.com</code>, <code>live.com</code>, <code>msn.com</code>, and their regional variants (e.g. <code>hotmail.co.uk</code>, <code>outlook.es</code>).</p>
-<p>Microsoft 365 work or school addresses on your own domain aren't detected automatically and won't connect until Microsoft sign-in (S37, #2240) ships.</p>
+<p>Microsoft 365 work or school addresses on your own domain can be recognised from their DNS mail records when the server-settings lookup is on. Either way they will not connect until Microsoft sign-in ships.</p>
 
 <h2>7. After you connect</h2>
 <ul>
@@ -146,7 +146,7 @@
 </div></main>
 <footer><div class="wrap">
   <a href="/">Home</a><a href="/help/">Help</a><a href="/help/connect-account">Connect an Account</a><a href="/help/ai">AI Help</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-  <p style="margin-top:14px">© 2026 Joan Marc Riera Duocastella · Castellum — a private, AI-powered email client for macOS.</p>
+  <p style="margin-top:14px">Copyright 2026 Riera Technologies Ltd · Castellum, a private email client for macOS.</p>
 </div></footer>
 </body>
 </html>
