@@ -8,14 +8,13 @@ The source code is public: https://github.com/joanmarcriera/castellum-app
 
 ## Download
 
-Grab the latest `.dmg` from the [Releases](https://github.com/joanmarcriera/castellum-releases/releases/latest) page.
+From version 0.4.0, releases are published with the source code:
+[castellum-app releases](https://github.com/joanmarcriera/castellum-app/releases/latest). This repository keeps
+versions up to 0.3.6 and hosts the website.
 
 - macOS 13 or later, universal build (Apple silicon and Intel)
 - Signed with an Apple Developer ID and notarised by Apple
 - Verify the download against the published `SHA256SUMS.txt`
-
-The 0.4.0 release candidate is an unsigned preview. It lives in the source repository's
-[releases](https://github.com/joanmarcriera/castellum-app/releases). macOS warns the first time you open it.
 
 ## Install
 
