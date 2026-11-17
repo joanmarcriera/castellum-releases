@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Castellum — Google Limited-Use Disclosure</title>
+<title>Castellum | Google Limited-Use Disclosure</title>
 <meta name="description" content="Castellum Google Limited-Use Disclosure" />
 <meta name="theme-color" content="#0b1626" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -52,20 +52,20 @@
 </div></header>
 <main><div class="wrap">
 <h1>Google Limited-Use Disclosure</h1>
-<p class='eff'>Effective date: 17 October 2026 · Castellum</p>
-<h2>Google API Services User Data Policy — Limited Use compliance</h2>
-<p>Castellum, provided by Joan Marc Riera (sole trader), trading via riera.co.uk, is building Google sign-in (OAuth) so you can use the app with your own Gmail account. <strong>Google sign-in is not available in the current release</strong>, which connects Gmail over IMAP with an app password; this disclosure describes how Google data will be handled once it ships. Castellum&#x27;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, <strong>including the Limited Use requirements</strong>.</p>
-<h3>Scopes requested and why</h3>
+<p class='eff'>Effective date: 18 November 2026 · Castellum</p>
+<h2>Google API Services User Data Policy, Limited Use compliance</h2>
+<p>Castellum, provided by Joan Marc Riera (sole trader), trading via riera.co.uk, connects to Gmail over IMAP with an app password. <strong>Castellum does not use any Google API today and receives no data from Google APIs.</strong> Google sign-in (OAuth) is not built. This page states how Google data would be handled if that is ever added. Castellum&#x27;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, <strong>including the Limited Use requirements</strong>.</p>
+<h3>Scopes Castellum would request, and why</h3>
 <ul>
-<li><code>https://www.googleapis.com/auth/gmail.readonly</code> — read your messages and metadata to</li>
+<li><code>https://www.googleapis.com/auth/gmail.readonly</code>, read your messages and metadata to</li>
 </ul>
 <p>display your mailbox, thread conversations, and build the local search index.</p>
 <ul>
-<li><code>https://www.googleapis.com/auth/gmail.modify</code> — organise your mail: mark read/unread,</li>
+<li><code>https://www.googleapis.com/auth/gmail.modify</code>, organise your mail: mark read/unread,</li>
 </ul>
 <p>label, archive, move, and flag messages, as you direct in the app.</p>
 <ul>
-<li><code>https://www.googleapis.com/auth/gmail.send</code> — send and reply to messages on your behalf.</li>
+<li><code>https://www.googleapis.com/auth/gmail.send</code>, send and reply to messages on your behalf.</li>
 </ul>
 <p>Each scope maps directly to a core, user-visible email-client feature. No scope is used for any purpose beyond operating the app on your device.</p>
 <h3>The four Limited-Use commitments</h3>
@@ -88,13 +88,13 @@
 <h3>Selling data</h3>
 <p>We do <strong>not</strong> sell Google user data.</p>
 <h3>Server-settings lookup is not Google data</h3>
-<p>When you add an account at a domain Castellum has no built-in settings for, it can look up that domain's mail servers (DNS, the domain's own settings page, and Mozilla's public provider database, <code>autoconfig.thunderbird.net</code>). This sends <strong>only the domain</strong> (the part after the @) &mdash; no address, password, token or Google user data &mdash; and it is not an API call to Google. Gmail and Googlemail addresses use Castellum's built-in settings and trigger no lookup at all; a custom domain hosted at Google Workspace is recognised from its public DNS mail-exchanger records. The lookup can be switched off in Settings &gt; General &gt; Account Setup. See the <a href="/privacy">Privacy Policy</a> for the full description.</p>
+<p>When you add an account at a domain Castellum has no built-in settings for, it can look up that domain's mail servers (DNS, the domain's own settings page, and Mozilla's public provider database, <code>autoconfig.thunderbird.net</code>). This sends <strong>only the domain</strong> (the part after the @). No address, password, token or Google user data is sent, and it is not an API call to Google. Gmail and Googlemail addresses use Castellum's built-in settings and trigger no lookup at all; a custom domain hosted at Google Workspace is recognised from its public DNS mail-exchanger records. The lookup can be switched off in Settings &gt; General &gt; Account Setup. See the <a href="/privacy">Privacy Policy</a> for the full description.</p>
 <h3>Contact</h3>
-<p>Questions about this disclosure: info@castellummail.com — Joan Marc Riera (sole trader), trading via riera.co.uk.</p>
+<p>Questions about this disclosure: info@castellummail.com, Joan Marc Riera (sole trader), trading via riera.co.uk.</p>
 </div></main>
 <footer><div class="wrap">
   <a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/google-limited-use">Google Limited-Use</a>
-  <p style="margin-top:14px">© 2026 Joan Marc Riera Duocastella · Castellum — a private, AI-powered email client for macOS.</p>
+  <p style="margin-top:14px">Copyright 2026 Riera Technologies Ltd · Castellum, a private email client for macOS.</p>
 </div></footer>
 </body>
 </html>
